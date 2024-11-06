@@ -1,5 +1,5 @@
 services:
-  db:
+  database:
     image: postgres:16
     environment:
       POSTGRES_USER: postgres
@@ -10,9 +10,8 @@ services:
   server:
     build:
       context: ../../
-      dockerfile: ./ci/dockerfiles/Dockerfile
-
+      dockerfile: ./ci/dockerfiles/Dockerfile.local
     ports:
       - 3000:3000
     depends_on:
-      - db
+      - database
