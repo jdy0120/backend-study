@@ -12,10 +12,12 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
   server:
     build:
       context: ../../
       dockerfile: ./ci/dockerfiles/Dockerfile
+      target: production
     volumes:
       - ../../src:/usr/src/app/src
     ports:
