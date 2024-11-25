@@ -1,5 +1,5 @@
 import { configDotenv } from "./configs/dotenv.config";
-import pool from "./configs/postgres";
+import { connectPostgres } from "./configs/sequelize.config";
 configDotenv();
 
 const runServer = async () => {
@@ -8,7 +8,7 @@ const runServer = async () => {
   // Start Server
   const PORT = process.env.PORT;
   app.listen(PORT, async () => {
-    await pool.connect();
+    await connectPostgres();
     console.log("PostgreSQL에 성공적으로 연결되었습니다!");
 
     console.log(`Server is running on http://localhost:${PORT}`);
